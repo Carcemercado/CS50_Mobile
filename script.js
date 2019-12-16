@@ -32,6 +32,11 @@ function newTodo() {
     let button = document.createElement("button");
       button.innerHTML = "X";
       button.addEventListener("click", removeTodo); // Add event listener for click event. Calls removeTodo()
+      function removeTodo() { //Function to remove list item.
+        count--;
+        itemCountSpan.innerHTML = count;
+        list.removeChild(listItemNode);
+      }
     //Append elements to listItemNode
     listItemNode.appendChild(checkBox); //Add checkbox input prior to adding text to li
     listItemNode.appendChild(listTextNode); //append text to li
@@ -52,16 +57,11 @@ function newTodo() {
     alert("Please enter an item to add.");
   }
 }
-function removeTodo(){
-  const currentItem = this;
-  count--;
-  itemCountSpan.innerHTML = count;
-  classNames.TODO_ITEM.remove(currentItem);
-}
+
 /** */
 function checkedCounter(){
   uncheckedCountSpan.innerHTML = checkCount;
-  if (myCheckbox.checked == true){
+  if (myCheckbox.checked === true){
     checkCount++;
   } else{
     checkCount --;
